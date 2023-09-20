@@ -37,3 +37,13 @@ LRatingService/src/main/java/com/spring/lcwd/rating/payload/ErrorDetails.java,f
 SRatingService/src/main/java/com/spring/lcwd/rating/repository/RatingRepository.java,c/a/ca7917e86ad13125e10006c2b44de16ee2ea2567
 ö
 jRatingService/src/main/java/com/spring/lcwd/rating/service/implementation/RatingServiceImplementation.java,d/f/df4992b45ffec686289847d171437b8c5396980b
+Ä
+PRatingService/src/main/java/com/spring/lcwd/rating/RatingServiceApplication.java,1/9/19596ac692ba6d5fc8c6ff114af627b606c33816
+u
+ERatingService/src/main/java/com/spring/lcwd/rating/entity/Rating.java,7/d/7d9abdc7d23c36051a7847daa9429fbba3df90cf
+G
+ServiceRegistry/pom.xml,b/2/b2f5299d90119fb6177af96297562a7d5fe130f3
+ç
+]ServiceRegistry/src/main/java/com/spring/registry/server/lcwd/ServiceRegistryApplication.java,4/1/412e0b75fb0a699e823ed45864c0f40699a3e204
+u
+ERatingService/src/main/java/com/spring/lcwd/rating/dto/RatingDto.java,d/f/df49d65d2eca60860a633a0232d4cda767d996d9
