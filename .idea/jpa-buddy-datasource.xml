@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="8abf4cbe-25c0-44bd-93dd-449d52a9b398" name="microservices-lcwd" url="jdbc:postgresql://localhost:5432/hotelmicroservice" driverClass="org.postgresql.Driver" />
+    </data-sources>
+  </component>
+</project>
