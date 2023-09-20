@@ -7,12 +7,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="HotelService" />
-        <module name="ServiceRegistry" />
-        <module name="UserService" />
-        <module name="RatingService" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="HotelService" target="17" />
+      <module name="RatingService" target="17" />
+      <module name="ServiceRegistry" target="17" />
+      <module name="UserService" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

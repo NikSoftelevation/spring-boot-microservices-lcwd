@@ -15,7 +15,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HotelException.class)
     public ResponseEntity<ErrorDetails> hotelExceptionHandler(HotelException exception, WebRequest request) {
 
-        ErrorDetails errorDetails = new ErrorDetails(exception.getMessage(), request.getDescription(false), LocalDateTime.now());
+        ErrorDetails errorDetails = new ErrorDetails(exception.getMessage(),request.getDescription(false),LocalDateTime.now());
 
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
