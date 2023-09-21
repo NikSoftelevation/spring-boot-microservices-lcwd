@@ -1,11 +1,16 @@
 package com.spring.lcwd.user.service.dto;
 
+import java.util.List;
+
+import com.spring.lcwd.user.service.entity.Rating;
+
 public class UserDto {
 
 	private String userId;
 	private String name;
 	private String email;
 	private String about;
+	private List<Rating> ratings;
 
 	public String getUserId() {
 		return userId;
