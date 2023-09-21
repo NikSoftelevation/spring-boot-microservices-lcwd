@@ -5,6 +5,7 @@ import com.spring.lcwd.user.service.entity.Hotel;
 import com.spring.lcwd.user.service.entity.Rating;
 import com.spring.lcwd.user.service.entity.User;
 import com.spring.lcwd.user.service.exception.UserException;
+import com.spring.lcwd.user.service.external.service.HotelService;
 import com.spring.lcwd.user.service.repository.UserRepository;
 import com.spring.lcwd.user.service.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -31,6 +32,8 @@ public class UserServiceImplementation implements UserService {
 	private UserRepository userRepository;
 	@Autowired
 	private RestTemplate restTemplate;
+	@Autowired
+	private HotelService hotelService;
 
 	@Override
 	public UserDto createUser(User user) {
@@ -77,12 +80,12 @@ public class UserServiceImplementation implements UserService {
 
 			// call API to HOTEL-SERVICE to get hotel
 
-			ResponseEntity<Hotel> forEntity = restTemplate
-					.getForEntity("http://HOTEL-SERVICE/api/hotels/get/" + rating.getHotelId(), Hotel.class);
+//			ResponseEntity<Hotel> forEntity = restTemplate
+//					.getForEntity("http://HOTEL-SERVICE/api/hotels/get/" + rating.getHotelId(), Hotel.class);
 
-			Hotel hotel = forEntity.getBody();
+			Hotel hotel = hotelService.getHotel(rating.getHotelId());
 
-			logger.info(" Response Status Code : {} ", forEntity.getStatusCode());
+//			logger.info(" Response Status Code : {} ", forEntity.getStatusCode());
 
 			// Set Hotel To Rating
 			rating.setHotel(hotel);
