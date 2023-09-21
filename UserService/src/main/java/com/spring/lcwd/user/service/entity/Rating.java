@@ -56,14 +56,21 @@ public class Rating {
 		this.hotel = hotel;
 	}
 
-	public Rating(String ratingId, String userId, String hotelId, int rating, String feedback, Hotel hotel) {
+	public Rating(String userId, String hotelId, int rating, String feedback, Hotel hotel) {
 		super();
-		this.ratingId = ratingId;
 		this.userId = userId;
 		this.hotelId = hotelId;
 		this.rating = rating;
 		this.feedback = feedback;
 		this.hotel = hotel;
+	}
+
+	public Rating(String userId, String hotelId, int rating, String feedback) {
+		super();
+		this.userId = userId;
+		this.hotelId = hotelId;
+		this.rating = rating;
+		this.feedback = feedback;
 	}
 
 	public Rating() {
