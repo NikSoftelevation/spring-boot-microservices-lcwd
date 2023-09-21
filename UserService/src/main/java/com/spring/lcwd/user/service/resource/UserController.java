@@ -13,39 +13,40 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin("*")
 public class UserController {
-    @Autowired
-    private UserService userService;
+	@Autowired
+	private UserService userService;
 
-    @PostMapping("/create/new/user")
-    public ResponseEntity<UserDto> createUser(@RequestBody User user) {
+	@PostMapping("/create/new/user")
+	public ResponseEntity<UserDto> createUser(@RequestBody User user) {
 
-        return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
-    }
+		return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
+	}
 
-    @PutMapping("/update/{userId}")
-    public ResponseEntity<UserDto> updateUserByUserId(@RequestBody User user, @PathVariable("userId") String userId) {
+	@PutMapping("/update/{userId}")
+	public ResponseEntity<UserDto> updateUserByUserId(@RequestBody User user, @PathVariable("userId") String userId) {
 
-        return new ResponseEntity<>(userService.updateUser(user, userId), HttpStatus.ACCEPTED);
-    }
+		return new ResponseEntity<>(userService.updateUser(user, userId), HttpStatus.ACCEPTED);
+	}
 
-    @GetMapping("/get/{userId}")
-    public ResponseEntity<UserDto> getUserByUserId(@PathVariable("userId") String userId) {
+	@GetMapping("/get/{userId}")
+	public ResponseEntity<UserDto> getUserByUserId(@PathVariable("userId") String userId) {
 
-        return new ResponseEntity<>(userService.getUserByUserId(userId), HttpStatus.OK);
-    }
+		return new ResponseEntity<>(userService.getUserByUserId(userId), HttpStatus.OK);
+	}
 
-    @GetMapping("/get/all")
-    public ResponseEntity<List<UserDto>> getAllUsers() {
+	@GetMapping("/get/all")
+	public ResponseEntity<List<UserDto>> getAllUsers() {
 
-        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
-    }
+		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
+	}
 
-    @DeleteMapping("/delete/{userId}")
-    public ResponseEntity<ApiResponse> deleteUserByUserId(@PathVariable("userId") String userId) {
+	@DeleteMapping("/delete/{userId}")
+	public ResponseEntity<ApiResponse> deleteUserByUserId(@PathVariable("userId") String userId) {
 
-        userService.deleteUserByUserId(userId);
+		userService.deleteUserByUserId(userId);
 
-        return new ResponseEntity<>(new ApiResponse("user deleted successfully", true), HttpStatus.GONE);
-    }
+		return new ResponseEntity<>(new ApiResponse("user deleted successfully", true), HttpStatus.GONE);
+	}
 }

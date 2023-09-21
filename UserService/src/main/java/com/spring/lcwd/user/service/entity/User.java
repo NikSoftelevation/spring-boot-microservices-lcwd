@@ -3,6 +3,7 @@ package com.spring.lcwd.user.service.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 import lombok.Getter;
 
@@ -23,8 +24,7 @@ public class User {
 	private String about;
 
 	@Transient
-	private List<Rating> ratings = new ArrayList<>();
-
+	private List<Rating> ratings;
 	public String getUserId() {
 		return userId;
 	}

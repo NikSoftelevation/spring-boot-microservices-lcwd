@@ -6,6 +6,7 @@ public class Rating {
 	private String hotelId;
 	private int rating;
 	private String feedback;
+	private Hotel hotel;
 
 	public String getRatingId() {
 		return ratingId;
@@ -47,13 +48,22 @@ public class Rating {
 		this.feedback = feedback;
 	}
 
-	public Rating(String ratingId, String userId, String hotelId, int rating, String feedback) {
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+
+	public Rating(String ratingId, String userId, String hotelId, int rating, String feedback, Hotel hotel) {
 		super();
 		this.ratingId = ratingId;
 		this.userId = userId;
 		this.hotelId = hotelId;
 		this.rating = rating;
 		this.feedback = feedback;
+		this.hotel = hotel;
 	}
 
 	public Rating() {

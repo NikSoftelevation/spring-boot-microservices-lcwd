@@ -1,6 +1,7 @@
 package com.spring.lcwd.user.service.service.implementation;
 
 import com.spring.lcwd.user.service.dto.UserDto;
+import com.spring.lcwd.user.service.entity.Hotel;
 import com.spring.lcwd.user.service.entity.Rating;
 import com.spring.lcwd.user.service.entity.User;
 import com.spring.lcwd.user.service.exception.UserException;
@@ -10,10 +11,12 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -64,12 +67,31 @@ public class UserServiceImplementation implements UserService {
 
 		// fetch rating of the above user from RATING-SERVICE
 
-		ArrayList<Rating> ratingsOfUser = restTemplate.getForObject(
-				"http://localhost:8088/api/ratings/get/all/ratings/by/userId/" + userByUserId.getUserId(),
-				ArrayList.class);
+		Rating[] ratingsOfUser = restTemplate.getForObject(
+				"http://RATING-SERVICE/api/ratings/get/all/ratings/by/userId/" + userByUserId.getUserId(),
+				Rating[].class);
 
-		userByUserId.setRatings(ratingsOfUser);
-		logger.info(" {} ", ratingsOfUser);
+		List<Rating> ratings = Arrays.stream(ratingsOfUser).toList();
+
+		List<Rating> ratingList = ratings.stream().map(rating -> {
+
+			// call API to HOTEL-SERVICE to get hotel
+
+			ResponseEntity<Hotel> forEntity = restTemplate
+					.getForEntity("http://HOTEL-SERVICE/api/hotels/get/" + rating.getHotelId(), Hotel.class);
+
+			Hotel hotel = forEntity.getBody();
+
+			logger.info(" Response Status Code : {} ", forEntity.getStatusCode());
+
+			// Set Hotel To Rating
+			rating.setHotel(hotel);
+
+			// Return Rating
+			return rating;
+		}).collect(Collectors.toList());
+
+		userByUserId.setRatings(ratingList);
 
 		return modelMapper.map(userByUserId, UserDto.class);
 	}
