@@ -1,0 +1,13 @@
+server:
+ port: 9090
+spring:
+  application:
+    name: CONFIG-SERVER 
+    
+    
+  cloud:
+   config:
+    server:
+     git: 
+       uri: https://github.com/NikSoftelevation/spring-config-server-application-yml
+       clone-on-start: true  
