@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 @CrossOrigin("*")
 public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@PostMapping("/create/new/user")
+	@PostMapping
 	public ResponseEntity<UserDto> createUser(@RequestBody User user) {
 
 		return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
 	}
 
-	@PutMapping("/update/{userId}")
+	@PutMapping
 	public ResponseEntity<UserDto> updateUserByUserId(@RequestBody User user, @PathVariable("userId") String userId) {
 
 		return new ResponseEntity<>(userService.updateUser(user, userId), HttpStatus.ACCEPTED);
@@ -36,13 +36,13 @@ public class UserController {
 		return new ResponseEntity<>(userService.getUserByUserId(userId), HttpStatus.OK);
 	}
 
-	@GetMapping("/get/all")
+	@GetMapping
 	public ResponseEntity<List<UserDto>> getAllUsers() {
 
 		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
 	}
 
-	@DeleteMapping("/delete/{userId}")
+	@DeleteMapping("/{userId}")
 	public ResponseEntity<ApiResponse> deleteUserByUserId(@PathVariable("userId") String userId) {
 
 		userService.deleteUserByUserId(userId);

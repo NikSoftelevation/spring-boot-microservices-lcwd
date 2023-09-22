@@ -12,41 +12,41 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/hotels")
+@RequestMapping("/hotels")
 @CrossOrigin("*")
 public class HotelController {
-    @Autowired
-    private HotelService hotelService;
+	@Autowired
+	private HotelService hotelService;
 
-    @PostMapping("/create/new/hotel")
-    public ResponseEntity<HotelDto> createHotel(@RequestBody Hotel hotel) {
+	@PostMapping
+	public ResponseEntity<HotelDto> createHotel(@RequestBody Hotel hotel) {
 
-        return new ResponseEntity<>(hotelService.createHotel(hotel), HttpStatus.CREATED);
-    }
+		return new ResponseEntity<>(hotelService.createHotel(hotel), HttpStatus.CREATED);
+	}
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<HotelDto> updateUser(@RequestBody Hotel hotel, @PathVariable("id") String id) {
+	@PutMapping("/update/{id}")
+	public ResponseEntity<HotelDto> updateUser(@RequestBody Hotel hotel, @PathVariable("id") String id) {
 
-        return new ResponseEntity<>(hotelService.updateHotel(hotel, id), HttpStatus.ACCEPTED);
-    }
+		return new ResponseEntity<>(hotelService.updateHotel(hotel, id), HttpStatus.ACCEPTED);
+	}
 
-    @GetMapping("/get/{id}")
-    public ResponseEntity<HotelDto> getHotelByHotelId(@PathVariable("id") String id) {
+	@GetMapping("/get/{id}")
+	public ResponseEntity<HotelDto> getHotelByHotelId(@PathVariable("id") String id) {
 
-        return new ResponseEntity<>(hotelService.getHotelByHotelId(id), HttpStatus.OK);
-    }
+		return new ResponseEntity<>(hotelService.getHotelByHotelId(id), HttpStatus.OK);
+	}
 
-    @GetMapping("/get/all")
-    public ResponseEntity<List<HotelDto>> getAllHotels() {
+	@GetMapping
+	public ResponseEntity<List<HotelDto>> getAllHotels() {
 
-        return new ResponseEntity<>(hotelService.getAllHotels(), HttpStatus.OK);
-    }
+		return new ResponseEntity<>(hotelService.getAllHotels(), HttpStatus.OK);
+	}
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<ApiResponse> deleteHotelById(@PathVariable("id") String id) {
+	@DeleteMapping("/{id}")
+	public ResponseEntity<ApiResponse> deleteHotelById(@PathVariable("id") String id) {
 
-        hotelService.deleteHotelByHotelId(id);
+		hotelService.deleteHotelByHotelId(id);
 
-        return new ResponseEntity<>(new ApiResponse("Hotel deleted successfully", true), HttpStatus.GONE);
-    }
+		return new ResponseEntity<>(new ApiResponse("Hotel deleted successfully", true), HttpStatus.GONE);
+	}
 }

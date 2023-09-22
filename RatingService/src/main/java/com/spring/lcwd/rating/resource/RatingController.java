@@ -11,46 +11,47 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/ratings")
+@RequestMapping("/ratings")
 @CrossOrigin("*")
 public class RatingController {
 
-    @Autowired
-    private RatingService ratingService;
+	@Autowired
+	private RatingService ratingService;
 
-    @PostMapping("/create/rating")
-    public ResponseEntity<RatingDto> createNewRating(@RequestBody Rating rating) {
+	@PostMapping
+	public ResponseEntity<RatingDto> createNewRating(@RequestBody Rating rating) {
 
-        return new ResponseEntity<>(ratingService.createRating(rating), HttpStatus.CREATED);
-    }
+		return new ResponseEntity<>(ratingService.createRating(rating), HttpStatus.CREATED);
+	}
 
-    @PutMapping("/update/{ratingId}")
-    public ResponseEntity<RatingDto> updateRating(@RequestBody Rating rating, @PathVariable("ratingId") String ratingId) {
+	@PutMapping("/update/{ratingId}")
+	public ResponseEntity<RatingDto> updateRating(@RequestBody Rating rating,
+			@PathVariable("ratingId") String ratingId) {
 
-        return new ResponseEntity<>(ratingService.updateRating(rating, ratingId), HttpStatus.ACCEPTED);
-    }
+		return new ResponseEntity<>(ratingService.updateRating(rating, ratingId), HttpStatus.ACCEPTED);
+	}
 
-    @GetMapping("/get/rating/{ratingId}")
-    public ResponseEntity<RatingDto> getRatingByRatingId(@PathVariable("ratingId") String ratingId) {
+	@GetMapping("/{ratingId}")
+	public ResponseEntity<RatingDto> getRatingByRatingId(@PathVariable("ratingId") String ratingId) {
 
-        return new ResponseEntity<>(ratingService.getRatingByRatingId(ratingId), HttpStatus.OK);
-    }
+		return new ResponseEntity<>(ratingService.getRatingByRatingId(ratingId), HttpStatus.OK);
+	}
 
-    @GetMapping("/get/all")
-    public ResponseEntity<List<RatingDto>> getAllRatings() {
+	@GetMapping
+	public ResponseEntity<List<RatingDto>> getAllRatings() {
 
-        return new ResponseEntity<>(ratingService.getAllRatings(), HttpStatus.OK);
-    }
+		return new ResponseEntity<>(ratingService.getAllRatings(), HttpStatus.OK);
+	}
 
-    @GetMapping("/get/all/ratings/by/userId/{userId}")
-    public ResponseEntity<List<RatingDto>> getAllRatingsByUserId(@PathVariable("userId") String userId) {
+	@GetMapping("/get/ratings/by/userId/{userId}")
+	public ResponseEntity<List<RatingDto>> getAllRatingsByUserId(@PathVariable("userId") String userId) {
 
-        return new ResponseEntity<>(ratingService.getAllRatingsByUserId(userId), HttpStatus.OK);
-    }
+		return new ResponseEntity<>(ratingService.getAllRatingsByUserId(userId), HttpStatus.OK);
+	}
 
-    @GetMapping("/get/all/ratings/by/hotelId/{id}")
-    public ResponseEntity<List<RatingDto>> getAllRatingsByHotelId(@PathVariable("id") String id) {
+	@GetMapping("/get/ratings/by/hotelId/{id}")
+	public ResponseEntity<List<RatingDto>> getAllRatingsByHotelId(@PathVariable("id") String id) {
 
-        return new ResponseEntity<>(ratingService.getAllRatingsByHotelId(id), HttpStatus.OK);
-    }
+		return new ResponseEntity<>(ratingService.getAllRatingsByHotelId(id), HttpStatus.OK);
+	}
 }
