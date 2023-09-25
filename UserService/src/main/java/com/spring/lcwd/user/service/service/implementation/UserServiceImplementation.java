@@ -63,7 +63,7 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public UserDto getUserByUserId(String userId) {
+	public User getUserByUserId(String userId) {
 
 		User userByUserId = userRepository.findById(userId)
 				.orElseThrow(() -> new UserException("User not found with userId " + userId));
@@ -96,7 +96,7 @@ public class UserServiceImplementation implements UserService {
 
 		userByUserId.setRatings(ratingList);
 
-		return modelMapper.map(userByUserId, UserDto.class);
+		return userByUserId;
 	}
 
 	@Override

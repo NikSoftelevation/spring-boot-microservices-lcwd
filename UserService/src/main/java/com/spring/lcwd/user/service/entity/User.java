@@ -25,6 +25,7 @@ public class User {
 
 	@Transient
 	private List<Rating> ratings;
+
 	public String getUserId() {
 		return userId;
 	}
@@ -72,6 +73,22 @@ public class User {
 		this.email = email;
 		this.about = about;
 		this.ratings = ratings;
+	}
+
+	public User(String name, String email, String about, List<Rating> ratings) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.about = about;
+		this.ratings = ratings;
+	}
+
+	public User(String userId, String name, String email, String about) {
+		super();
+		this.userId = userId;
+		this.name = name;
+		this.email = email;
+		this.about = about;
 	}
 
 	public User() {
