@@ -18,7 +18,8 @@ spring:
     properties:
       hibernate: 
        dialect: org.hibernate.dialect.MySQLDialect  
-      
+ 
+  #Config Server     
   config:
     import: optional:configserver:http://localhost:9090 
       
@@ -35,6 +36,8 @@ management:
     health:
       show-details: always
   
+  
+#Resilience4j Configuration
 resilience4j:
   circuitbreaker:
     instances:
@@ -48,6 +51,22 @@ resilience4j:
        permitted-number-of-calls-in-half-open-state: 3
        sliding-window-size: 10
        sliding-window-type: COUNT_BASED
+       
+  #Retry Module Configuration       
+  retry:
+    instances:
+      ratingHotelService: 
+       max-attempts: 3 
+       wait-duration: 5s
+       
+  #Rate Limiter Configuration        
+  ratelimiter:
+    instances:
+      userRateLimiter:
+        limit-refresh-period: 4s
+        limit-for-period: 2
+        timeout-duration: 2s
+                
 #eureka:
 #  instance:
 #   prefer-ip-address: true
