@@ -2,6 +2,8 @@ server:
   port: 8082
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
   datasource:
     url: jdbc:mysql://localhost:3306/usermicro
     username: root
@@ -66,7 +68,6 @@ resilience4j:
         limit-refresh-period: 4s
         limit-for-period: 2
         timeout-duration: 2s
-                
 #eureka:
 #  instance:
 #   prefer-ip-address: true
