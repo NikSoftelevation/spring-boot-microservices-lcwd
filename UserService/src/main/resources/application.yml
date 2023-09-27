@@ -21,11 +21,6 @@ spring:
            okta: 
              issuer-uri: https://dev-81762478.okta.com/oauth2/default 
  
-         
-             
-       
-
-
   main:
     allow-bean-definition-overriding: true
   datasource:
