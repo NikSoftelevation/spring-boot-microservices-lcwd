@@ -19,3 +19,10 @@ spring:
        dialect: org.hibernate.dialect.MySQLDialect  
   config:
     import: optional:configserver:http://localhost:9090   
+    
+    
+#Okta Configuration
+okta:
+  oauth2:
+    issuer: https://dev-81762478.okta.com/oauth2/default
+    audience: api://default 
