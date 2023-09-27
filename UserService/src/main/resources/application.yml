@@ -2,6 +2,30 @@ server:
   port: 8082
 
 spring:
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-81762478.okta.com/oauth2/default      
+      client:
+         registration: 
+           my-internal-client: 
+            provider: okta    
+            authorization-grant-type: client_credentials
+            scope: internal
+            client-id: 0oabjjldcmAgQpgd15d7
+            client-secret: Yon6UwiInSPkyTxSksGKzp90K85XlxFrUFp69bK3i_H12CRtPJdaOd8j2EmUYcxf
+        
+         provider:
+           okta: 
+             issuer-uri: https://dev-81762478.okta.com/oauth2/default 
+ 
+         
+             
+       
+
+
   main:
     allow-bean-definition-overriding: true
   datasource:
@@ -68,6 +92,13 @@ resilience4j:
         limit-refresh-period: 4s
         limit-for-period: 2
         timeout-duration: 2s
+        
+#Okta Configuration
+okta:
+  oauth2:
+    issuer: https://dev-81762478.okta.com/oauth2/default
+    audience: api://default         
+        
 #eureka:
 #  instance:
 #   prefer-ip-address: true

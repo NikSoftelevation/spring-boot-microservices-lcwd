@@ -8,7 +8,6 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.context.ServerSecurityContextRepository;
 import org.springframework.security.web.server.context.WebSessionServerSecurityContextRepository;
 
-
 @Configuration
 @EnableWebFluxSecurity
 public class SecurityConfig {
@@ -28,10 +27,8 @@ public class SecurityConfig {
 
 		return httpSecurity.securityContextRepository(securityContextRepository()).build();
 	}
-
 	@Bean
 	public ServerSecurityContextRepository securityContextRepository() {
 		return new WebSessionServerSecurityContextRepository();
 	}
-
 }
